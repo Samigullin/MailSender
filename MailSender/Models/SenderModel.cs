@@ -9,9 +9,21 @@ namespace MailSender.Models
 {
     class SenderModel
     {
-        private MailAddress _from, _to;
-        private SmtpClient _client;
-        private MailMessage _message;
+        private readonly MailAddress _from, _to;
+        private readonly SmtpClient _client;
+        private readonly MailMessage _message;
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="srv">Адрес сервера</param>
+        /// <param name="login">Логин</param>
+        /// <param name="pswd">Пароль</param>
+        /// <param name="to">Кому</param>
+        /// <param name="subj">Тема письма</param>
+        /// <param name="body">Текст письма</param>
+        /// <param name="port">Порт сервера</param>
+        /// <param name="enableSsl">Использовать SSL шифрование</param>
         public SenderModel(string srv, string login, SecureString pswd, string to, string subj, string body, int port, bool? enableSsl)
         {
             _to = new MailAddress(to, to.Split("@")[0]);
@@ -32,6 +44,9 @@ namespace MailSender.Models
             };
         }
 
+        /// <summary>
+        /// Отправить письмо
+        /// </summary>
         public void SendMail()
         {
             _client.Send(_message);

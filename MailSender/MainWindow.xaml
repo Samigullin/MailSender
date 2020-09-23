@@ -11,7 +11,7 @@
         <DockPanel>
 
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="Файл">
+                <MenuItem Header="Файл" Height="25">
                     <MenuItem Header="Выход"/>
                 </MenuItem>
             </Menu>
@@ -22,20 +22,20 @@
                 <TabItem Header="Написать письмо">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="130"/>
+                            <RowDefinition Height="165"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <GroupBox Header="Параметры" BorderThickness="3">
+                        <GroupBox Header="Параметры" BorderThickness="2" Margin="2">
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="26"/>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="28"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="60"/>
@@ -81,52 +81,65 @@
                         </GroupBox>
 
                         <GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
-                                  BorderThickness="3" Header="Письмо">
+                                  BorderThickness="2" Header="Письмо" Margin="2">
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="26"/>
-                                    <RowDefinition Height="26"/>
+                                    <RowDefinition Height="35"/>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="28"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="130"/>
+                                    <ColumnDefinition Width="130"/>
                                     <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="23*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Grid.Row="1">Кому:</Label>
+                                <StackPanel Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="3"
+                                            Orientation="Horizontal">
 
-                                <TextBox  Name="tbTo"
-                                          Text="Адрес получателя"
-                                          Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" 
-                                          Margin="1,1,1,1" ToolTip = "Адрес получателя" 
-                                          Foreground="LightGray" TextAlignment="Center"
-                                          GotFocus="TbTo_OnGotFocus" LostFocus="TbTo_OnLostFocus"/>
+                                    <Label >Кому:</Label>
 
-                                <TextBox Name="tbSubj"
-                                         Text="Тема письма"
-                                         Grid.Column="3" Grid.Row="1" Margin="1,1,1,1"
-                                         Foreground="LightGray" TextAlignment="Center"
-                                         GotFocus="TbSubj_OnGotFocus" LostFocus="TbSubj_OnLostFocus"
-                                         />
+                                    <TextBox  Name="tbTo"
+                                              Text="Адрес получателя" Width="280"
+                                              Margin="1" ToolTip = "Адрес получателя" 
+                                              Foreground="LightGray" TextAlignment="Center"
+                                              GotFocus="TbTo_OnGotFocus" LostFocus="TbTo_OnLostFocus"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"
+                                            Orientation="Horizontal">
+
+                                    <Label >Тема:</Label>
+
+                                    <TextBox Name="tbSubj"
+                                             Text="Тема письма" ToolTip ="Тема письма"
+                                             Margin="1" Width="280" 
+                                             Foreground="LightGray" TextAlignment="Center"
+                                             GotFocus="TbSubj_OnGotFocus" LostFocus="TbSubj_OnLostFocus"
+                                    />
+                                </StackPanel>
 
                                 <Button Name="btnClear"
-                                        Grid.Column="0" Grid.Row="0" Margin="1,1,1,1" Click="btnClear_Click">
+                                        FontSize="12" Height="25"
+                                        Grid.Column="0" Grid.Row="0" Margin="1,5,1,5" Click="btnClear_Click" >
                                     Новое письмо
                                 </Button>
 
                                 <Button Name="btnSend" 
-                                        Grid.Column="1" Grid.Row="0" Margin="1,1,1,1" Click="btnSend_Click">
-                                    Отправить письмо
+                                        FontSize="12" Height="25"
+                                        Grid.Column="1" Grid.Row="0" Margin="1,5,1,5" 
+                                        Click="btnSend_Click" >
+                                    Отправить
                                 </Button>
 
-                                <TextBox Name="tbBody" 
-                                         Grid.Row="2" Grid.Column = "0" Grid.ColumnSpan="4"
+                                <TextBox Name="tbBody"  BorderThickness="2"
+                                         Grid.Row="3" Grid.Column = "0" Grid.ColumnSpan="4"
                                          TextWrapping="Wrap"
                                          VerticalScrollBarVisibility="Visible"
                                          AcceptsReturn="True"
-                                         />
+                                         Margin="0,5,0,0" Grid.RowSpan="2"/>
 
 
                             </Grid>
