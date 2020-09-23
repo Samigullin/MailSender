@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MailSender.Models;
 
 namespace MailSender
 {
@@ -20,35 +21,40 @@ namespace MailSender
     /// </summary>
     public partial class MainWindow : Window
     {
+        SenderModel mailer;
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+            mailer = new SenderModel(srv: tbSrvAddr.Text, login: tbLogin.Text, pswd: pbSrvPswd.SecurePassword, to: tbTo.Text, subj: tbSubj.Text, body: tbBody.Text, port: Int32.Parse(tbSrvPort.Text), enableSsl: cbUseSSL.IsChecked);
+            mailer.SendMail();
+        }
+
+
         #region обработчики событий по фокусу
 
         //TODO: Переделать на триггеры и убрать обработчики из Code-Behind
 
-        private void TbFrom_OnGotFocus(object sender, RoutedEventArgs e)
+        private void TbSubj_OnGotFocus(object sender, RoutedEventArgs e)
         {
-            if (tbFrom.Text == "Адрес отправителя" || tbFrom.Text == "")
+            if (tbSubj.Text == "Тема письма" || tbSubj.Text == "")
             {
-                tbFrom.Foreground = Brushes.Black;
-                tbFrom.Text = "";
+                tbSubj.Foreground = Brushes.Black;
+                tbSubj.Text = "";
             }
         }
 
-        private void TbFrom_OnLostFocus(object sender, RoutedEventArgs e)
+        private void TbSubj_OnLostFocus(object sender, RoutedEventArgs e)
         {
-            if (tbFrom.Text == "Адрес отправителя" || tbFrom.Text == "")
+            if (tbSubj.Text == "Тема письма" || tbSubj.Text == "")
             {
-                tbFrom.Foreground = Brushes.LightGray;
-                tbFrom.Text = "Адрес отправителя";
+                tbSubj.Foreground = Brushes.LightGray;
+                tbSubj.Text = "Тема письма";
             }
         }
-
-
-        #endregion
 
         private void TbTo_OnGotFocus(object sender, RoutedEventArgs e)
         {
@@ -86,22 +92,38 @@ namespace MailSender
             }
         }
 
-        private void TbSrvPort_OnGotFocus(object sender, RoutedEventArgs e)
+        private void TbLogin_OnGotFocus(object sender, RoutedEventArgs e)
         {
-            if (tbSrvPort.Text == "25" || tbSrvPort.Text == "")
+            if (tbLogin.Text == "Адрес отправителя" || tbLogin.Text == "")
             {
-                tbSrvPort.Foreground = Brushes.Black;
-                tbSrvPort.Text = "";
+                tbLogin.Foreground = Brushes.Black;
+                tbLogin.Text = "";
             }
         }
 
-        private void TbSrvPort_OnLostFocus(object sender, RoutedEventArgs e)
+        private void TbLogin_OnLostFocus(object sender, RoutedEventArgs e)
         {
-            if (tbSrvPort.Text == "25" || tbSrvPort.Text == "")
+            if (tbLogin.Text == "Адрес отправителя" || tbLogin.Text == "")
             {
-                tbSrvPort.Foreground = Brushes.LightGray;
-                tbSrvPort.Text = "25";
+                tbLogin.Foreground = Brushes.LightGray;
+                tbLogin.Text = "Адрес отправителя";
             }
         }
+
+
+
+
+
+
+
+        #endregion
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            tbBody.Text = "";
+
+        }
+
+
     }
 }
