@@ -33,6 +33,12 @@ namespace MailSender
             mailer.SendMail();
         }
 
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            tbBody.Text = "";
+            tbSubj.Text = "";
+            tbTo.Text = "";
+        }
 
         #region обработчики событий по фокусу
 
@@ -117,12 +123,6 @@ namespace MailSender
 
 
         #endregion
-
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
-            tbBody.Text = "";
-
-        }
 
 
     }
