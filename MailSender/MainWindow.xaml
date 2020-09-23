@@ -6,156 +6,156 @@
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
         Title="Почтовый клиент" Height="600" Width="800" MinHeight="600" MinWidth="800">
-    <Grid>
 
-        <DockPanel>
+    <DockPanel>
 
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="Файл" Height="25">
-                    <MenuItem Header="Выход"/>
-                </MenuItem>
-            </Menu>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл" Height="25">
+                <MenuItem Header="Выход"/>
+            </MenuItem>
+        </Menu>
 
-            <StatusBar DockPanel.Dock="Bottom">StatusBar</StatusBar>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="tbStatusBar" Text="Готов!"/>
+            </StatusBarItem>
+        </StatusBar>
 
-            <TabControl>
-                <TabItem Header="Написать письмо">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="165"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <GroupBox Header="Параметры" BorderThickness="2" Margin="2">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="28"/>
-                                    <RowDefinition Height="28"/>
-                                    <RowDefinition Height="28"/>
-                                    <RowDefinition Height="28"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="60"/>
-                                    <ColumnDefinition Width="40*"/>
-                                    <ColumnDefinition Width="40"/>
-                                    <ColumnDefinition Width="42"/>
-                                </Grid.ColumnDefinitions>
+        <TabControl>
+            <TabItem Header="Написать письмо">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="165"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Header="Параметры" BorderThickness="2" Margin="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="28"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="42"/>
+                            </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Grid.Row="0">Cервер:</Label>
+                            <Label Grid.Column="0" Grid.Row="0">Cервер:</Label>
 
-                                <TextBox Name="tbSrvAddr" 
+                            <TextBox Name="tbSrvAddr" 
                                          Grid.Column="1" Grid.Row="0"  Margin="1" ToolTip ="Адрес почтового сервера" 
                                          Foreground="LightGray" TextAlignment="Center"
                                          GotFocus="TbSrvAddr_OnGotFocus" LostFocus="TbSrvAddr_OnLostFocus"
                                          Text="Адрес сервера"/>
 
-                                <Label Grid.Column="2" Grid.Row="0" VerticalAlignment="Center">Порт:</Label>
+                            <Label Grid.Column="2" Grid.Row="0" VerticalAlignment="Center">Порт:</Label>
 
-                                <TextBox  Name="tbSrvPort" 
+                            <TextBox  Name="tbSrvPort" 
                                           Grid.Column="3" Grid.Row="0" Margin="1" Width="35" ToolTip="Порт" 
                                           TextAlignment="Center" Text="587"/>
 
-                                <Label Grid.Column="0" Grid.Row="1">Аккаунт:</Label>
+                            <Label Grid.Column="0" Grid.Row="1">Аккаунт:</Label>
 
-                                <TextBox Name="tbLogin" 
+                            <TextBox Name="tbLogin" 
                                          Grid.Column="1" Grid.Row="1" Foreground="LightGray"
                                          Margin="1" ToolTip = "Адрес отправителя" TextAlignment="Center"
                                          GotFocus="TbLogin_OnGotFocus" LostFocus="TbLogin_OnLostFocus" Text="Адрес отправителя"/>
 
-                                <Label Grid.Column="0" Grid.Row="2">Пароль:</Label>
+                            <Label Grid.Column="0" Grid.Row="2">Пароль:</Label>
 
-                                <PasswordBox Name="pbSrvPswd"
+                            <PasswordBox Name="pbSrvPswd"
                                              Grid.Column="1" Grid.Row="2"  ToolTip ="Адрес почтового сервера" 
                                              Margin="1" HorizontalContentAlignment="Center"/>
 
-                                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
-                                    <Label >Использовать SSL шифрование:</Label>
-                                    <CheckBox Name="cbUseSSL" 
+                            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+                                <Label >Использовать SSL шифрование:</Label>
+                                <CheckBox Name="cbUseSSL" 
                                               VerticalAlignment="Center" IsChecked="True"/>
-                                </StackPanel>
+                            </StackPanel>
 
-                            </Grid>
-                        </GroupBox>
+                        </Grid>
+                    </GroupBox>
 
-                        <GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
+                    <GroupBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
                                   BorderThickness="2" Header="Письмо" Margin="2">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="35"/>
-                                    <RowDefinition Height="28"/>
-                                    <RowDefinition Height="28"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="130"/>
-                                    <ColumnDefinition Width="130"/>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="23*"/>
-                                </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="28"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="130"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="23*"/>
+                            </Grid.ColumnDefinitions>
 
-                                <StackPanel Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="3"
+                            <StackPanel Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="3"
                                             Orientation="Horizontal">
 
-                                    <Label >Кому:</Label>
+                                <Label >Кому:</Label>
 
-                                    <TextBox  Name="tbTo"
+                                <TextBox  Name="tbTo"
                                               Text="Адрес получателя" Width="280"
                                               Margin="1" ToolTip = "Адрес получателя" 
                                               Foreground="LightGray" TextAlignment="Center"
                                               GotFocus="TbTo_OnGotFocus" LostFocus="TbTo_OnLostFocus"/>
-                                </StackPanel>
+                            </StackPanel>
 
-                                <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"
+                            <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"
                                             Orientation="Horizontal">
 
-                                    <Label >Тема:</Label>
+                                <Label >Тема:</Label>
 
-                                    <TextBox Name="tbSubj"
+                                <TextBox Name="tbSubj"
                                              Text="Тема письма" ToolTip ="Тема письма"
                                              Margin="1" Width="280" 
                                              Foreground="LightGray" TextAlignment="Center"
                                              GotFocus="TbSubj_OnGotFocus" LostFocus="TbSubj_OnLostFocus"
                                     />
-                                </StackPanel>
+                            </StackPanel>
 
-                                <Button Name="btnClear"
+                            <Button Name="btnClear"
                                         FontSize="12" Height="25"
                                         Grid.Column="0" Grid.Row="0" Margin="1,5,1,5" Click="btnClear_Click" >
-                                    Новое письмо
-                                </Button>
+                                Новое письмо
+                            </Button>
 
-                                <Button Name="btnSend" 
+                            <Button Name="btnSend" 
                                         FontSize="12" Height="25"
                                         Grid.Column="1" Grid.Row="0" Margin="1,5,1,5" 
                                         Click="btnSend_Click" >
-                                    Отправить
-                                </Button>
+                                Отправить
+                            </Button>
 
-                                <TextBox Name="tbBody"  BorderThickness="2"
+                            <TextBox Name="tbBody"  BorderThickness="2"
                                          Grid.Row="3" Grid.Column = "0" Grid.ColumnSpan="4"
                                          TextWrapping="Wrap"
                                          VerticalScrollBarVisibility="Visible"
                                          AcceptsReturn="True"
-                                         Margin="0,5,0,0" Grid.RowSpan="2"/>
+                                         Margin="0,5,0,0" />
+
+                        </Grid>
+
+                    </GroupBox>
+
+                </Grid>
+
+            </TabItem>
+
+        </TabControl>
+
+    </DockPanel>
 
 
-                            </Grid>
 
-                        </GroupBox>
-
-
-
-
-                    </Grid>
-
-                </TabItem>
-            </TabControl>
-
-
-        </DockPanel>
-
-    </Grid>
 </Window>

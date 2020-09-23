@@ -29,8 +29,17 @@ namespace MailSender
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            mailer = new SenderModel(srv: tbSrvAddr.Text, login: tbLogin.Text, pswd: pbSrvPswd.SecurePassword, to: tbTo.Text, subj: tbSubj.Text, body: tbBody.Text, port: Int32.Parse(tbSrvPort.Text), enableSsl: cbUseSSL.IsChecked);
-            mailer.SendMail();
+            try
+            {
+                mailer = new SenderModel(srv: tbSrvAddr.Text, login: tbLogin.Text, pswd: pbSrvPswd.SecurePassword, to: tbTo.Text, subj: tbSubj.Text, body: tbBody.Text, port: Int32.Parse(tbSrvPort.Text), enableSsl: cbUseSSL.IsChecked);
+                mailer.SendMail();
+                tbStatusBar.Text = "Письмо отправлено";
+            }
+            catch (Exception exception)
+            {
+                tbStatusBar.Text = exception.Message;
+            }
+            
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -38,6 +47,7 @@ namespace MailSender
             tbBody.Text = "";
             tbSubj.Text = "";
             tbTo.Text = "";
+            tbStatusBar.Text = "Готов!";
         }
 
         #region обработчики событий по фокусу
