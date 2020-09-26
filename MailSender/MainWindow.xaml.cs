@@ -21,7 +21,7 @@ namespace MailSender
     /// </summary>
     public partial class MainWindow : Window
     {
-        SenderModel mailer;
+        SenderModel sender;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,8 +31,8 @@ namespace MailSender
         {
             try
             {
-                mailer = new SenderModel(srv: tbSrvAddr.Text, login: tbLogin.Text, pswd: pbSrvPswd.SecurePassword, to: tbTo.Text, subj: tbSubj.Text, body: tbBody.Text, port: Int32.Parse(tbSrvPort.Text), enableSsl: cbUseSSL.IsChecked);
-                mailer.SendMail();
+                this.sender = new SenderModel(srv: tbSrvAddr.Text, login: tbLogin.Text, pswd: pbSrvPswd.SecurePassword, to: tbTo.Text, subj: tbSubj.Text, body: tbBody.Text, port: Int32.Parse(tbSrvPort.Text), enableSsl: cbUseSSL.IsChecked);
+                this.sender.SendMail();
                 tbStatusBar.Text = "Письмо отправлено";
             }
             catch (Exception exception)

@@ -10,12 +10,26 @@
     <DockPanel>
 
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Файл" Height="25">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Создать"/>
+                <MenuItem Header="Открыть"/>
+                <MenuItem Header="Закрыть"/>
+                <MenuItem Header="Сохранить"/>
+                <Separator/>
                 <MenuItem Header="Выход"/>
+            </MenuItem>
+            <MenuItem Header="Сервис">
+                <MenuItem Header="Параметры"/>
+            </MenuItem>
+            <MenuItem Header="Помощь">
+                <MenuItem Header="О программе"/>
             </MenuItem>
         </Menu>
 
         <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem DockPanel.Dock ="Right">
+                <ResizeGrip/>
+            </StatusBarItem>
             <StatusBarItem>
                 <TextBlock Name="tbStatusBar" Text="Готов!"/>
             </StatusBarItem>
