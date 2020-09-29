@@ -98,7 +98,7 @@
                         <DataGrid Name="RecipientsList" ItemsSource="{x:Static data:TestData.Recipients}"
                                   AutoGenerateColumns="False"
                                   GridLinesVisibility="Vertical"
-                                  AlternatingRowBackground="LightBlue"
+                                  AlternatingRowBackground="LightSlateGray"
                                   VerticalGridLinesBrush="Gray">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" MinWidth="30"/>

@@ -17,9 +17,7 @@ namespace MailSender
 
         private void OnSendButtonClick(object Sender, RoutedEventArgs E)
         {
-            var sender = SendersList.SelectedItem as Sender;
-            if (sender is null) return;
-
+            if (!(SendersList.SelectedItem is Sender sender)) return;
             if (!(RecipientsList.SelectedItem is Recipient recipient)) return;
             if (!(ServersList.SelectedItem is Server server)) return;
             if (!(MessagesList.SelectedItem is Message message)) return;
