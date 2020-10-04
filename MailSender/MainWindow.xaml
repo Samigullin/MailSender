@@ -6,9 +6,16 @@
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:m="clr-namespace:MailSender.Models"
+        xmlns:vm="clr-namespace:MailSender.ViewModels"
         xmlns:local="clr-namespace:MailSender"
-        xmlns:System="clr-namespace:System;assembly=System.Runtime" 
-        Title="Мэйл сэндэр" Height="600" Width="1000" MinHeight="600" MinWidth="1000">
+        xmlns:System="clr-namespace:System;assembly=System.Runtime"
+        xmlns:commands="clr-namespace:MailSender.Infrastructure.Commands"
+        Title="{Binding Title}" Height="600" Width="1000" MinHeight="600" MinWidth="1000">
+
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <Menu.Resources>
@@ -23,7 +30,11 @@
                 <MenuItem Header="Закрыть"/>
                 <MenuItem Header="Сохранить"/>
                 <Separator/>
-                <MenuItem Header="Выход"/>
+                <MenuItem Header="Выход">
+                    <MenuItem.Command>
+                        <commands:CloseWindowCommand/>
+                    </MenuItem.Command>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Сервис">
                 <MenuItem Header="Параметры"/>
