@@ -1,5 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Input;
 using MailSender.Data;
+using MailSender.Infrastructure.Commands;
 using MailSender.lib.Interfaces;
 using MailSender.Models;
 using MailSender.ViewModels.Base;
@@ -24,10 +27,22 @@ namespace MailSender.ViewModels
             set => Set(ref _Title, value);
         }
 
+        private ICommand _ShowDialogCommand;
+        public ICommand ShowDialogCommand => _ShowDialogCommand
+            ??= new LambdaCommand(OnShowDialogCommandExecuted);
+        private void OnShowDialogCommandExecuted(object p)
+        {
+            var message = p as string ?? "Hello World!";
+            MessageBox.Show(message, "Сообщение от первой команды");
+        }
+
+
         private ObservableCollection<Server> _Servers;
         private ObservableCollection<Sender> _Senders;
         private ObservableCollection<Recipient> _Recipients;
         private ObservableCollection<Message> _Messages;
+
+        #region Props
 
         public ObservableCollection<Server> Servers
         {
@@ -85,6 +100,7 @@ namespace MailSender.ViewModels
             set => Set(ref _SelectedMessage, value);
         }
 
+        #endregion
 
 
         public MainWindowViewModel(IMailService MailService)
