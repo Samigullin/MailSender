@@ -3,6 +3,9 @@ using MailSender.lib.Interfaces;
 
 namespace MailSender.lib.Service
 {
+    /// <summary>
+    /// Класс для оповещения об отправке почты в режиме дебаг
+    /// </summary>
     public class DebugMailService : IMailService
     {
         public IMailSender GetSender(string Server, int Port, bool SSL, string Login, string Password)

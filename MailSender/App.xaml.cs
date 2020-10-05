@@ -33,10 +33,9 @@ namespace MailSender
         {
             services.AddSingleton<MainWindowViewModel>();
 
-            services.AddTransient<IMailService, SmtpMailService>();
-
+            
 #if DEBUG
-            //services.AddTransient<IMailService, DebugMailService>();
+            services.AddTransient<IMailService, DebugMailService>();
 #else
             services.AddTransient<IMailService, SmtpMailService>();
 #endif
