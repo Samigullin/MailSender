@@ -108,11 +108,11 @@
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
-                        <views:RecipientsView Grid.Column="0"/>
-                        <views:RecipientEditor Grid.Column="1"/>
+                        <views:RecipientsView Grid.Column="0" Margin="2"/>
+                        <views:RecipientEditor Grid.Column="1" Margin="2"/>
                     </Grid>
                 </DockPanel>
             </TabItem>

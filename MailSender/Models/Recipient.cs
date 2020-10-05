@@ -6,7 +6,13 @@ namespace MailSender.Models
     {
         private string _name;
         private string _address;
+        private long _id;
 
+        public long Id
+        {
+            get => _id;
+            set => Set(ref _id, value);
+        }
         public string Name
         {
             get => _name;
