@@ -9,6 +9,7 @@
         xmlns:vm="clr-namespace:MailSender.ViewModels"
         xmlns:local="clr-namespace:MailSender"
         xmlns:System="clr-namespace:System;assembly=System.Runtime"
+        xmlns:views="clr-namespace:MailSender.Views"
         xmlns:commands="clr-namespace:MailSender.Infrastructure.Commands"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="600" Width="1000" MinHeight="600" MinWidth="1000">
@@ -106,23 +107,10 @@
                                     ToolTip="Удалить"/>
                         </ToolBar>
                     </ToolBarTray>
-                    <GroupBox Header="Список получателей">
-                        <DataGrid Name="RecipientsList" 
-                                  ItemsSource="{Binding Recipients}"
-                                  SelectedItem="{Binding SelectedRecipient}"
-                                  AutoGenerateColumns="False"
-                                  GridLinesVisibility="Vertical"
-                                  AlternatingRowBackground="LightSlateGray"
-                                  VerticalGridLinesBrush="Gray"
-                                  CanUserAddRows="False"
-                                  IsReadOnly="True">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" MinWidth="30"/>
-                                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="Адрес" MinWidth="160" Binding="{Binding Address}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </GroupBox>
+
+                    <Grid>
+                        <views:RecipientsView/>
+                    </Grid>
                 </DockPanel>
             </TabItem>
             <TabItem Header="Планировщик">
