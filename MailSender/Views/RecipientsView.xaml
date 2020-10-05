@@ -14,8 +14,8 @@
             <DockPanel>
                 <DockPanel DockPanel.Dock="Top">
                     <UniformGrid DockPanel.Dock="Top" Rows="1" Margin="5" HorizontalAlignment="Left">
-                        <Button Content="Загрузить" Margin="3" FontSize="12"></Button>
-                        <Button Content="Сохранить" Margin="3" FontSize="12"></Button>
+                        <Button Content="Загрузить" Margin="3"/>
+                        <Button Content="Сохранить" Margin="3"/>
                     </UniformGrid>
                     <TextBlock Text="Фильтр:" Margin="5"> </TextBlock>
                     <TextBox />
