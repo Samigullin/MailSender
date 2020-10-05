@@ -113,7 +113,9 @@
                                   AutoGenerateColumns="False"
                                   GridLinesVisibility="Vertical"
                                   AlternatingRowBackground="LightSlateGray"
-                                  VerticalGridLinesBrush="Gray">
+                                  VerticalGridLinesBrush="Gray"
+                                  CanUserAddRows="False"
+                                  IsReadOnly="True">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" MinWidth="30"/>
                                 <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
@@ -266,7 +268,7 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Column="0" Grid.Row="0" Text="Число отправленных писем:"/>
-                    <TextBlock Grid.Column="1" Grid.Row="0" Text="5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Statistic.SendMessagesCount}"/>
 
                     <TextBlock Grid.Column="0" Grid.Row="1" Text="Число отправителей в базе:"/>
                     <TextBlock Grid.Column="1" Grid.Row="1" Text="5"/>
