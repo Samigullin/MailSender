@@ -4,6 +4,7 @@ namespace MailSender.Models
 {
     class Server
     {
+        public long? Id { get; set; }
         public string Address { get; set; }
 
         private int _Port = 25;

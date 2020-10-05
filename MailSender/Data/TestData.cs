@@ -1,7 +1,10 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using MailSender.lib.Service;
 using MailSender.Models;
+using System.IO;
+using System;
 
 namespace MailSender.Data
 {
@@ -40,5 +43,19 @@ namespace MailSender.Data
                 Body = $"Текст сообщения {i}"
             })
             .ToList();
+
+        //public static TestData LoadFromXML(string FileName)
+        //{
+        //    var serializer = new XmlSerializer(typeof(TestData));
+        //    using var file = File.OpenText(FileName);
+        //    return (TestData)serializer.Deserialize(file);
+        //}
+        //public void SaveToXML(string FileName)
+        //{
+        //    var serializer = new XmlSerializer(typeof(TestData));
+        //    using var file = File.Create(FileName);
+        //    serializer.Serialize(file, this);
+        //}
+
     }
 }
