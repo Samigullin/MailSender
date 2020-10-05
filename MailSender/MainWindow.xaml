@@ -21,7 +21,7 @@
                     <Setter Property="FontSize" Value="15"/>
                 </Style>
             </Menu.Resources>
-            
+
             <MenuItem Header="Файл">
                 <MenuItem Header="Создать"/>
                 <MenuItem Header="Открыть"/>
@@ -107,7 +107,12 @@
                     </ToolBarTray>
 
                     <Grid>
-                        <views:RecipientsView/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <views:RecipientsView Grid.Column="0"/>
+                        <views:RecipientEditor Grid.Column="1"/>
                     </Grid>
                 </DockPanel>
             </TabItem>
