@@ -14,8 +14,6 @@
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="600" Width="1000" MinHeight="600" MinWidth="1000">
 
-
-
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <Menu.Resources>
