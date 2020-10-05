@@ -140,7 +140,7 @@
                                         <Setter Property="Background" Value="White"/>
                                     </Style>
                                 </StackPanel.Resources>
-                                <Button Content="Отправить" Click="OnSendButtonClick"/>
+                                <Button Content="Отправить" Command="{Binding SendMailCommand}" />
                                 <Button Content="Запланировать"/>
                             </StackPanel>
                         </StackPanel>
