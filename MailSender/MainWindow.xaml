@@ -11,6 +11,7 @@
         xmlns:System="clr-namespace:System;assembly=System.Runtime"
         xmlns:views="clr-namespace:MailSender.Views"
         xmlns:commands="clr-namespace:MailSender.Infrastructure.Commands"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="600" Width="1000" MinHeight="600" MinWidth="1000">
 
