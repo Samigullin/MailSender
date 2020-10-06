@@ -34,12 +34,12 @@ namespace MailSender.Models
             get => _address;
             set
             {
-                string pattern = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
-                                 @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
-                if (!Regex.IsMatch(value, pattern, RegexOptions.IgnoreCase))
-                {
-                    throw new ArgumentException("Не правильный формат почты!");
-                }
+                //string pattern = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                //                 @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
+                //if (!Regex.IsMatch(value, pattern, RegexOptions.IgnoreCase))
+                //{
+                //    throw new ArgumentException("Не правильный формат почты!");
+                //}
                 Set(ref _address, value);
             }
         }
