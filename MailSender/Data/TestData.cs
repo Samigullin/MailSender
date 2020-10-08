@@ -32,7 +32,9 @@ namespace MailSender.Data
                 Address = $"smtp.server{i}.com",
                 Login = $"Login-{i}",
                 Password = TextEncoder.Encode($"Password-{i}"),
-                UseSSL = i % 2 == 0
+                UseSSL = i % 2 == 0,
+                SenderMail = $"sender_{i}@server.ru"
+
             })
             .ToList();
 

@@ -54,7 +54,7 @@
             <TabItem Header="Списки">
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
-                        <ToolBar Header="Сервера" Band="0" BandIndex="0">
+                        <ToolBar Header="Сервера:" Band="0" BandIndex="0">
                             <ComboBox Name="ServersList" Margin="26,0,0,0" MinWidth="120" MaxWidth="200"
                                       SelectedIndex="0"
                                       ItemsSource="{Binding Servers}"
@@ -69,19 +69,20 @@
                             <Button fa:Awesome.Content="Regular_TrashAlt" Foreground="Red" ToolTip="Удалить" Command="{Binding DeleteServerCommand}" CommandParameter="{Binding SelectedServer}"/>
                         </ToolBar>
 
-                        <ToolBar Header="Отправители" Band="1">
-                            <TextBox Name="Sender" MinWidth="120" MaxWidth="200"
-                                      Text="{Binding SelectedServer.SenderMail}">
-                            </TextBox>
-                            <Button fa:Awesome.Content="Solid_PlusCircle" Foreground="DarkBlue" ToolTip="Добавить"/>
+                        <ToolBar Header="Отправитель:" Band="0">
+                            <Label Name="Sender" MinWidth="120" MaxWidth="200" Content="{Binding SelectedServer.SenderMail}"
+                                   VerticalAlignment="Center"
+                                      >
+                            </Label>
+                            <!--<Button fa:Awesome.Content="Solid_PlusCircle" Foreground="DarkBlue" ToolTip="Добавить" />
 
-                            <Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" ToolTip="Редактировать"/>
+                            <Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" ToolTip="Редактировать"  />
 
-                            <Button fa:Awesome.Content="Regular_TrashAlt" Foreground="Red" ToolTip="Удалить"/>
+                            <Button fa:Awesome.Content="Regular_TrashAlt" Foreground="Red" ToolTip="Удалить" />-->
                         </ToolBar>
-                        <ToolBar Header="Перейти в планировщик" Band="0">
+                        <!--<ToolBar Header="Перейти в планировщик" Band="0" >
                             <Button fa:Awesome.Content="Regular_Clock" Foreground="DarkBlue"/>
-                        </ToolBar>
+                        </ToolBar>-->
                         <ToolBar Header="Получатели" Band="1">
                             <Button ToolTip="Добавить">
                                 <StackPanel Orientation="Horizontal">
