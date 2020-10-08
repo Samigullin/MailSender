@@ -36,12 +36,13 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Column="0" Grid.Row="1" Text="ID:"/>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Address:"/>
-            <TextBlock Grid.Column="0" Grid.Row="3" Text="Login:"/>
-            <TextBlock Grid.Column="0" Grid.Row="4" Text="Password:"/>
-            <TextBlock Grid.Column="0" Grid.Row="5" Text="Port:"/>
-            <TextBlock Grid.Column="0" Grid.Row="6" Text="Use SSL:"/>
-            <TextBlock Grid.Column="0" Grid.Row="7" Text="Description:"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Mail Server:"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Mail Address:"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Login:"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Password:"/>
+            <TextBlock Grid.Column="0" Grid.Row="6" Text="Port:"/>
+            <TextBlock Grid.Column="0" Grid.Row="7" Text="Use SSL:"/>
+            <TextBlock Grid.Column="0" Grid.Row="8" Text="Description:"/>
 
             <TextBox Grid.Column="1" Grid.Row="1" Margin="5,15,0,0" Text="{Binding SelectedServer.Id}"/>
 

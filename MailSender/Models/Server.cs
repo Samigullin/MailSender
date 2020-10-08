@@ -6,6 +6,7 @@ namespace MailSender.Models
     class Server : BaseModel
     {
         private long? _id;
+        private string _senderMail;
         private string _address;
         private int _port = 25;
         private bool _usessl;
@@ -23,6 +24,12 @@ namespace MailSender.Models
         {
             get => _address;
             set => Set(ref _address, value);
+        }
+
+        public string SenderMail
+        {
+            get => _senderMail;
+            set => Set(ref _senderMail, value);
         }
 
 

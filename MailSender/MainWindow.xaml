@@ -70,20 +70,9 @@
                         </ToolBar>
 
                         <ToolBar Header="Отправители" Band="1">
-                            <ComboBox Name="SendersList" MinWidth="120" MaxWidth="200"
-                                      SelectedIndex="0"
-                                      SelectedItem="{Binding SelectedSender}"
-                                      ItemsSource="{Binding Senders}">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="m:Sender">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Name}" ToolTip="{Binding Address}"/>
-                                            <!--<TextBlock>:</TextBlock>
-                                            <TextBlock Text="{Binding Address}" Opacity="0.4"/>-->
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
+                            <TextBox Name="Sender" MinWidth="120" MaxWidth="200"
+                                      Text="{Binding SelectedServer.SenderMail}">
+                            </TextBox>
                             <Button fa:Awesome.Content="Solid_PlusCircle" Foreground="DarkBlue" ToolTip="Добавить"/>
 
                             <Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" ToolTip="Редактировать"/>
