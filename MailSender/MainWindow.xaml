@@ -13,7 +13,7 @@
         xmlns:commands="clr-namespace:MailSender.Infrastructure.Commands"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
-        Title="{Binding Title}" Height="600" Width="1000" MinHeight="600" MinWidth="1000">
+        Title="{Binding Title}" Height="700" Width="1000" MinHeight="600" MinWidth="1000">
 
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -84,15 +84,16 @@
                             <Button fa:Awesome.Content="Regular_Clock" Foreground="DarkBlue"/>
                         </ToolBar>-->
                         <ToolBar Header="Получатели" Band="1">
-                            <Button ToolTip="Добавить">
+                            <Button ToolTip="Добавить" Command="{Binding CreateNewRecipientCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <fa:ImageAwesome Icon="Solid_PlusCircle" Height="12" Foreground="DarkBlue"/>
                                     <TextBlock Text="Добавить получателя" Margin="5,0,0,0"/>
                                 </StackPanel>
                             </Button>
-                            <Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" 
-                                    ToolTip="Редактировать"/>
+                            <!--<Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" 
+                                    ToolTip="Редактировать"/>-->
                             <Button fa:Awesome.Content="Regular_TrashAlt" Foreground="Red"
+                                    Command="{Binding DeleteRecipientCommand}"
                                     ToolTip="Удалить"/>
                         </ToolBar>
                     </ToolBarTray>

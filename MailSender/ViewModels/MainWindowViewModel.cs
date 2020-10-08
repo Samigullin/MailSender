@@ -96,6 +96,52 @@ namespace MailSender.ViewModels
 
         #region Команды
 
+        #region CreateNewRecipientCommand
+
+        private ICommand _CreateNewRecipientCommand;
+
+        public ICommand CreateNewRecipientCommand => _CreateNewRecipientCommand
+            ??= new LambdaCommand(OnCreateNewRecipientCommandExecuted, CanCreateNewRecipientCommandExecute);
+
+        private bool CanCreateNewRecipientCommandExecute(object p) => true;
+
+        private void OnCreateNewRecipientCommandExecuted(object p)
+        {
+
+            //var server = p as Server ?? SelectedServer;
+            //if (server is null) return;
+            //Servers.Add(server);
+
+            Recipients.Add(new Recipient()
+            {
+                Name = "New_Recipient",
+                Address = "new@new.new"
+            });
+
+        }
+
+        #endregion
+
+        #region DeleteRecipientCommand
+
+        private ICommand _DeleteRecipientCommand;
+
+        public ICommand DeleteRecipientCommand => _DeleteRecipientCommand
+            ??= new LambdaCommand(OnDeleteRecipientCommandExecuted, CanDeleteRecipientCommandExecute);
+
+        private bool CanDeleteRecipientCommandExecute(object p) => p is Recipient || SelectedRecipient != null;
+
+        private void OnDeleteRecipientCommandExecuted(object p)
+        {
+            var recipient = p as Recipient ?? SelectedRecipient;
+            if (recipient is null) return;
+
+            Recipients.Remove(recipient);            
+            SelectedRecipient = Recipients.FirstOrDefault();
+        }
+
+        #endregion
+
         #region CreateNewServerCommand
 
         private ICommand _CreateNewServerCommand;
@@ -107,9 +153,17 @@ namespace MailSender.ViewModels
 
         private void OnCreateNewServerCommandExecuted(object p) {
             
-            var server = p as Server ?? SelectedServer;
-            if (server is null) return;
-            Servers.Add(server);
+            //var server = p as Server ?? SelectedServer;
+            //if (server is null) return;
+            //Servers.Add(server);
+
+            Servers.Add(new Server()
+            {
+                Address = "new.new",
+                SenderMail = "new@new.new",
+                Login = "new login",
+                Password = "new pswd"
+            });
 
         }
 
@@ -169,7 +223,7 @@ namespace MailSender.ViewModels
         private bool CanSendMailCommandExecute(object p)
         {
             if (SelectedServer is null) return false;
-            if (SelectedSender is null) return false;
+            //if (SelectedSender is null) return false;
             if (SelectedRecipient is null) return false;
             if (SelectedMessage is null) return false;
             return true;
