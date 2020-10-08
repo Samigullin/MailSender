@@ -8,6 +8,8 @@ using MailSender.Infrastructure.Commands;
 using MailSender.lib.Interfaces;
 using MailSender.Models;
 using MailSender.ViewModels.Base;
+using MailSender.Views;
+using MaterialDesignThemes.Wpf;
 
 namespace MailSender.ViewModels
 {
@@ -127,6 +129,8 @@ namespace MailSender.ViewModels
             var server = p as Server ?? SelectedServer;
             if (server is null) return;
 
+            var ServerEditor = new ServerEditor();
+            ServerEditor.Show();  
         }
 
         #endregion

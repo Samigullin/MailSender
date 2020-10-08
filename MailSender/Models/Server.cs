@@ -56,7 +56,7 @@ namespace MailSender.Models
             set => Set(ref _password, value);
         }
 
-        public string Description { get => _description; }
+        public string Description { get => _description; set => Set(ref _description, value); }
 
         //private readonly string _Description;
 
