@@ -16,6 +16,8 @@
                     <UniformGrid DockPanel.Dock="Top" Rows="1" Margin="5" HorizontalAlignment="Left">
                         <Button Content="Загрузить" Margin="3"/>
                         <Button Content="Сохранить" Margin="3"/>
+                        <Button Content="Добавить" Margin="3" Command="{Binding CreateNewRecipientCommand}"/>
+                        <Button Content="Удалить" Margin="3" Command="{Binding DeleteRecipientCommand}"/>
                     </UniformGrid>
                     <TextBlock Text="Фильтр:" Margin="5"> </TextBlock>
                     <TextBox />

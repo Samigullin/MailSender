@@ -117,6 +117,7 @@ namespace MailSender.ViewModels
                 Name = "New_Recipient",
                 Address = "new@new.new"
             });
+            SelectedRecipient = Recipients.LastOrDefault();
 
         }
 
@@ -164,6 +165,9 @@ namespace MailSender.ViewModels
                 Login = "new login",
                 Password = "new pswd"
             });
+            SelectedServer = Servers.LastOrDefault();
+            //открываем новый сервер сразу для редактирования
+            OnEditServerCommandExecuted(SelectedServer);
 
         }
 

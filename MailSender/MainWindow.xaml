@@ -70,10 +70,10 @@
                         </ToolBar>
 
                         <ToolBar Header="Отправитель:" Band="0">
-                            <Label Name="Sender" MinWidth="120" MaxWidth="200" Content="{Binding SelectedServer.SenderMail}"
+                            <TextBlock Name="Sender" MinWidth="120" MaxWidth="200" Text="{Binding SelectedServer.SenderMail}"
                                    VerticalAlignment="Center"
                                       >
-                            </Label>
+                            </TextBlock>
                             <!--<Button fa:Awesome.Content="Solid_PlusCircle" Foreground="DarkBlue" ToolTip="Добавить" />
 
                             <Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" ToolTip="Редактировать"  />
@@ -83,11 +83,11 @@
                         <!--<ToolBar Header="Перейти в планировщик" Band="0" >
                             <Button fa:Awesome.Content="Regular_Clock" Foreground="DarkBlue"/>
                         </ToolBar>-->
-                        <ToolBar Header="Получатели" Band="1">
+                        <ToolBar Header="Получатели:" Band="1">
                             <Button ToolTip="Добавить" Command="{Binding CreateNewRecipientCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <fa:ImageAwesome Icon="Solid_PlusCircle" Height="12" Foreground="DarkBlue"/>
-                                    <TextBlock Text="Добавить получателя" Margin="5,0,0,0"/>
+                                    <TextBlock Margin="5,0,0,0"/>
                                 </StackPanel>
                             </Button>
                             <!--<Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" 
