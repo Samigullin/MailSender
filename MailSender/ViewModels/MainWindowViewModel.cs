@@ -241,7 +241,7 @@ namespace MailSender.ViewModels
             var message = SelectedMessage;
 
             var mail_sender = _MailService.GetSender(server.Address, server.Port, server.UseSSL, server.Login, server.Password);
-            mail_sender.Send(sender.Address, recipient.Address, message.Subject, message.Body);
+            mail_sender.Send(server.SenderMail, recipient.Address, message.Subject, message.Body);
 
             Statistic.MessageSended();
         }
