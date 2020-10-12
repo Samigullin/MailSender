@@ -22,7 +22,7 @@ namespace Lesson5_Threading
             summ(0, n, ref sum1);
             stopwatch1.Stop();
 
-            Console.WriteLine($"Время подсчета суммы {n} = {sum1} чисел без потоков: " + stopwatch1.Elapsed); 
+            Console.WriteLine($"Время подсчета суммы {n} = {sum1} чисел без потоков: " + stopwatch1.Elapsed);
 
             //делим на три потока
             var thread1 = new calcSumInThread(0, n / 3, ref sum2);
