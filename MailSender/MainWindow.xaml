@@ -6,9 +6,15 @@
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:data="clr-namespace:MailSender.Data"
         xmlns:m="clr-namespace:MailSender.Models"
+        xmlns:vm="clr-namespace:MailSender.ViewModels"
         xmlns:local="clr-namespace:MailSender"
-        xmlns:System="clr-namespace:System;assembly=System.Runtime" 
-        Title="Мэйл сэндэр" Height="600" Width="1000" MinHeight="600" MinWidth="1000">
+        xmlns:System="clr-namespace:System;assembly=System.Runtime"
+        xmlns:views="clr-namespace:MailSender.Views"
+        xmlns:commands="clr-namespace:MailSender.Infrastructure.Commands"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
+        Title="{Binding Title}" Height="700" Width="1000" MinHeight="600" MinWidth="1000">
+
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <Menu.Resources>
@@ -16,14 +22,18 @@
                     <Setter Property="FontSize" Value="15"/>
                 </Style>
             </Menu.Resources>
-            
+
             <MenuItem Header="Файл">
                 <MenuItem Header="Создать"/>
                 <MenuItem Header="Открыть"/>
                 <MenuItem Header="Закрыть"/>
                 <MenuItem Header="Сохранить"/>
                 <Separator/>
-                <MenuItem Header="Выход"/>
+                <MenuItem Header="Выход">
+                    <MenuItem.Command>
+                        <commands:CloseWindowCommand/>
+                    </MenuItem.Command>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Сервис">
                 <MenuItem Header="Параметры"/>
@@ -44,69 +54,58 @@
             <TabItem Header="Списки">
                 <DockPanel>
                     <ToolBarTray DockPanel.Dock="Top">
-                        <ToolBar Header="Сервера" Band="0" BandIndex="0">
+                        <ToolBar Header="Сервера:" Band="0" BandIndex="0">
                             <ComboBox Name="ServersList" Margin="26,0,0,0" MinWidth="120" MaxWidth="200"
                                       SelectedIndex="0"
-                                      ItemsSource="{x:Static data:TestData.Servers}"
+                                      ItemsSource="{Binding Servers}"
+                                      SelectedItem="{Binding SelectedServer}"
                                       DisplayMemberPath="Address">
                             </ComboBox>
 
-                            <Button fa:Awesome.Content="Solid_PlusCircle" Foreground="DarkBlue" ToolTip="Добавить"/>
+                            <Button fa:Awesome.Content="Solid_PlusCircle" Foreground="DarkBlue" ToolTip="Добавить" Command="{Binding CreateNewServerCommand}" CommandParameter="{Binding SelectedServer}"/>
 
-                            <Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" ToolTip="Редактировать"/>
+                            <Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" ToolTip="Редактировать" Command="{Binding EditServerCommand}" CommandParameter="{Binding SelectedServer}"/>
 
-                            <Button fa:Awesome.Content="Regular_TrashAlt" Foreground="Red" ToolTip="Удалить"/>
+                            <Button fa:Awesome.Content="Regular_TrashAlt" Foreground="Red" ToolTip="Удалить" Command="{Binding DeleteServerCommand}" CommandParameter="{Binding SelectedServer}"/>
                         </ToolBar>
 
-                        <ToolBar Header="Отправители" Band="1">
-                            <ComboBox Name="SendersList" MinWidth="120" MaxWidth="200"
-                                      SelectedIndex="0"
-                                      ItemsSource="{x:Static data:TestData.Senders}">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate DataType="m:Sender">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Name}" ToolTip="{Binding Address}"/>
-                                            <!--<TextBlock>:</TextBlock>
-                                            <TextBlock Text="{Binding Address}" Opacity="0.4"/>-->
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                            <Button fa:Awesome.Content="Solid_PlusCircle" Foreground="DarkBlue" ToolTip="Добавить"/>
+                        <ToolBar Header="Отправитель:" Band="0">
+                            <TextBlock Name="Sender" MinWidth="120" MaxWidth="200" Text="{Binding SelectedServer.SenderMail}"
+                                   VerticalAlignment="Center"
+                                      >
+                            </TextBlock>
+                            <!--<Button fa:Awesome.Content="Solid_PlusCircle" Foreground="DarkBlue" ToolTip="Добавить" />
 
-                            <Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" ToolTip="Редактировать"/>
+                            <Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" ToolTip="Редактировать"  />
 
-                            <Button fa:Awesome.Content="Regular_TrashAlt" Foreground="Red" ToolTip="Удалить"/>
+                            <Button fa:Awesome.Content="Regular_TrashAlt" Foreground="Red" ToolTip="Удалить" />-->
                         </ToolBar>
-                        <ToolBar Header="Перейти в планировщик" Band="0">
+                        <!--<ToolBar Header="Перейти в планировщик" Band="0" >
                             <Button fa:Awesome.Content="Regular_Clock" Foreground="DarkBlue"/>
-                        </ToolBar>
-                        <ToolBar Header="Получатели" Band="1">
-                            <Button ToolTip="Добавить">
+                        </ToolBar>-->
+                        <ToolBar Header="Получатели:" Band="1">
+                            <Button ToolTip="Добавить" Command="{Binding CreateNewRecipientCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <fa:ImageAwesome Icon="Solid_PlusCircle" Height="12" Foreground="DarkBlue"/>
-                                    <TextBlock Text="Добавить получателя" Margin="5,0,0,0"/>
+                                    <TextBlock Margin="5,0,0,0"/>
                                 </StackPanel>
                             </Button>
-                            <Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" 
-                                    ToolTip="Редактировать"/>
+                            <!--<Button fa:Awesome.Content="Solid_Edit" Foreground="Orange" 
+                                    ToolTip="Редактировать"/>-->
                             <Button fa:Awesome.Content="Regular_TrashAlt" Foreground="Red"
+                                    Command="{Binding DeleteRecipientCommand}"
                                     ToolTip="Удалить"/>
                         </ToolBar>
                     </ToolBarTray>
-                    <GroupBox Header="Список получателей">
-                        <DataGrid Name="RecipientsList" ItemsSource="{x:Static data:TestData.Recipients}"
-                                  AutoGenerateColumns="False"
-                                  GridLinesVisibility="Vertical"
-                                  AlternatingRowBackground="LightSlateGray"
-                                  VerticalGridLinesBrush="Gray">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" MinWidth="30"/>
-                                <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Header="Адрес" MinWidth="160" Binding="{Binding Address}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </GroupBox>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <views:RecipientsView Grid.Column="0" Margin="2"/>
+                        <views:RecipientEditor Grid.Column="1" Margin="2"/>
+                    </Grid>
                 </DockPanel>
             </TabItem>
             <TabItem Header="Планировщик">
@@ -126,7 +125,7 @@
                                         <Setter Property="Background" Value="White"/>
                                     </Style>
                                 </StackPanel.Resources>
-                                <Button Content="Отправить" Click="OnSendButtonClick"/>
+                                <Button Content="Отправить" Command="{Binding SendMailCommand}" />
                                 <Button Content="Запланировать"/>
                             </StackPanel>
                         </StackPanel>
@@ -206,7 +205,9 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <GroupBox Grid.Column="0" Header="Список писем">
-                        <ListBox Name="MessagesList" ItemsSource="{x:Static data:TestData.Messages}" 
+                        <ListBox Name="MessagesList" 
+                                 ItemsSource="{Binding Messages}" 
+                                 SelectedItem="{Binding SelectedMessage}"
                                  DisplayMemberPath="Subject"/>
                     </GroupBox>
                     <GroupBox Grid.Column="1" Header="Редактор">
@@ -250,7 +251,7 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Column="0" Grid.Row="0" Text="Число отправленных писем:"/>
-                    <TextBlock Grid.Column="1" Grid.Row="0" Text="5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Statistic.SendMessagesCount}"/>
 
                     <TextBlock Grid.Column="0" Grid.Row="1" Text="Число отправителей в базе:"/>
                     <TextBlock Grid.Column="1" Grid.Row="1" Text="5"/>
